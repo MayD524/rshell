@@ -1,4 +1,5 @@
 from errorHandler import errorHandler
+from threading import Thread
 import aliasHandler as AH
 import filemgr
 import commands
@@ -18,7 +19,8 @@ commandPair = {
 	8 : filemgr.makeFile,## file creation
 	9 : filemgr.rmdir,   ## remove dir
 	10: AH.aliases,      ## make new aliase or view
-	11: env.envCore	     ## make new env var	
+	11: env.envCore,	     ## make new env var	
+	12: commands.RUN
 }
 
 class commandHandler:
@@ -42,7 +44,8 @@ class commandHandler:
 
 			elif argState == 3 and self.cmdArgs == None or self.cmdArgs != None:
 				commandPair[commandID](self.cmdArgs)
-
+			elif argState == 4 and self.cmdArgs == None or self.cmdArgs != None:
+				Thread(commandPair[commandID](self.cmdArgs)).start()
 			elif argState == 1 and self.cmdArgs == None:
 				errorHandler(102, command=self.command)
 

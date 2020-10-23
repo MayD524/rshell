@@ -3,6 +3,9 @@ from prettytable import PrettyTable
 import termcolor as tc
 import os
 
+def RUN(script=None, Args=None):
+	os.system(f"{script}")
+
 def cwd(state=0):
 	
 	if state != 0:
