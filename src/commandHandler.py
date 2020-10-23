@@ -1,6 +1,6 @@
 from errorHandler import errorHandler
 import aliasHandler as AH
-import plugins.system
+import system
 import commands
 import filemgr
 import env
