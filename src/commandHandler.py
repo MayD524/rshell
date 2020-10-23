@@ -1,25 +1,27 @@
 from errorHandler import errorHandler
 import aliasHandler as AH
-import filemgr
+import plugins.system
 import commands
+import filemgr
 import env
 
 import json
 
 commandPair = {
-	0 : 0, ## help
+	0 : 0,                  ## help
 	1 : commands.changeDir, ## cd
-	2 : commands.ls, ## ls
-	3 : filemgr.makeDir, ## mkdir
+	2 : commands.ls,        ## ls
+	3 : filemgr.makeDir,    ## mkdir
 	4 : filemgr.removeFile, ## rm
-	5 : commands.cwd,    ## cwd
-	6 : filemgr.reader,  ## file reading
-	7 : filemgr.writer,  ## file writing
-	8 : filemgr.makeFile,## file creation
-	9 : filemgr.rmdir,   ## remove dir
-	10: AH.aliases,      ## make new aliase or view
-	11: env.envCore,	     ## make new env var	
-	12: commands.RUN
+	5 : commands.cwd,       ## cwd
+	6 : filemgr.reader,     ## file reading
+	7 : filemgr.writer,     ## file writing
+	8 : filemgr.makeFile,   ## file creation
+	9 : filemgr.rmdir,      ## remove dir
+	10: AH.aliases,         ## make new aliase or view
+	11: env.envCore,	    ## make new env var	
+	12: commands.RUN,	    ## run command
+	13: system.getProc      ## get processes
 }
 
 class commandHandler:
