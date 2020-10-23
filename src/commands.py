@@ -3,8 +3,8 @@ from prettytable import PrettyTable
 import termcolor as tc
 import os
 
-def RUN(script=None, Args=None):
-	os.system(f"{script}")
+def RUN(args=None):
+	os.system(f"{args[0]}")
 
 def cwd(state=0):
 	
