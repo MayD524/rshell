@@ -1,11 +1,16 @@
 from errorHandler import errorHandler as EH
 from prettytable import PrettyTable
 import termcolor as tc
+import subprocess
 import os
 
 def RUN(args=None):
-	os.system(f"{args[0]}")
+	try:
+		subprocess.Popen(f"{args[0]}")
+	except exception as e:
 
+		print(e)		
+		
 def cwd(state=0):
 	
 	if state != 0:

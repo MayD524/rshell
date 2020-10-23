@@ -1,5 +1,4 @@
 from errorHandler import errorHandler
-from threading import Thread
 import aliasHandler as AH
 import filemgr
 import commands
@@ -45,7 +44,7 @@ class commandHandler:
 			elif argState == 3 and self.cmdArgs == None or self.cmdArgs != None:
 				commandPair[commandID](self.cmdArgs)
 			elif argState == 4 and self.cmdArgs == None or self.cmdArgs != None:
-				Thread(commandPair[commandID](self.cmdArgs)).start()
+				commandPair[commandID](self.cmdArgs)
 			elif argState == 1 and self.cmdArgs == None:
 				errorHandler(102, command=self.command)
 

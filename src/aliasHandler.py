@@ -22,6 +22,7 @@ def returnAlias(target=None):
 			print(table)
 		else:
 			EH(106, command=target)
+			
 def removeAlias(aliasTag=None):
 	aliases = getAlias()
 	forbiden = ["help", "cd", "" "ls", "mkdir", "rm", "cwd", "read", "write", "mkf", "rmdir", "aliase"]

@@ -1,5 +1,4 @@
 import commandHandler as ch
-from threading import Thread
 import termcolor
 import os
 
@@ -26,7 +25,7 @@ def main():
 			break
 
 		elif command != "":
-			Thread(commandParser(command)).start()
+			commandParser(command)
 
 if __name__ == "__main__":
 	main()
