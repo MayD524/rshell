@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
 import psutil
 
-def getProc(lookFor=None):
+def getProc():
 	table = PrettyTable()
 	table.field_name = ["#", "Name", "PID"]
 	i = 0
@@ -11,10 +11,8 @@ def getProc(lookFor=None):
 	        # Get process name & pid from process object.
 	        processName = proc.name()
 	        processID = proc.pid
-	        if lookFor == None:
-	        	table.add_row([i, processName, processID])
-	        elif lookFor != None and processName == lookFor[0] or processID == lookFor[0]:
-	        	table.add_row([i], processName, processID)
+	        table.add_row([i, processName, processID])
+
 	    except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
 	        pass
 
