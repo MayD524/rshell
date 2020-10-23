@@ -30,7 +30,7 @@ class commandHandler:
 		self.getAlias()
 
 	def getAlias(self):
-		with open("C:/rshell/src/alias.json", "r") as aliasReader:
+		with open("C:/rshell/src/json/alias.json", "r") as aliasReader:
 			self.aliases = json.load(aliasReader)
 
 	def execute(self, commandID=0, argState=0):

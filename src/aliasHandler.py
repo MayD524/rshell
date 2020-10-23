@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
 from errorHandler import errorHandler as EH
 import json
-jsonFile = "C:/rshell/src/alias.json"
+jsonFile = "C:/rshell/src/json/alias.json"
 
 def getAlias():
 	with open(jsonFile, "r") as jsonReader:

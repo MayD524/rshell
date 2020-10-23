@@ -5,7 +5,7 @@ import subprocess
 import json
 import os
 
-jsonFile = "C:/rshell/src/env.json"
+jsonFile = "C:/rshell/src/json/env.json"
 def getVars():
 	with open(jsonFile, "r") as jsReader:
 		return json.load(jsReader)
