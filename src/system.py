@@ -3,7 +3,7 @@ import psutil
 
 def getProc():
 	table = PrettyTable()
-	table.field_name = ["#", "Name", "PID"]
+	table.field_names = ["#", "Name", "PID"]
 	i = 0
 	# Iterate over all running process
 	for proc in psutil.process_iter():

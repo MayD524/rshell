@@ -5,8 +5,15 @@ import subprocess
 import os
 
 def RUN(args=None):
+	if type(args) == list:
+		cmd = args[0]
+	else:
+		cmd = args
 	try:
-		subprocess.Popen(f"{args[0]}")
+		if len(args) == 1:
+			subprocess.Popen(f"{cmd}")
+		else:
+			subprocess.Popen(f"{cmd} {args[1]}")
 	except exception as e:
 
 		print(e)		

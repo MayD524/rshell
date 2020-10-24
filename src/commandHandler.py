@@ -81,6 +81,10 @@ class commandHandler:
 
 			elif cmdDetails[0] != 0: ## requires args
 				self.execute(commandID=cmdDetails[1],argState=cmdDetails[0])
-
+		elif self.command not in self.aliases.keys():
+			try:
+				commands.RUN()
+			except Exception as e:
+				pass
 		else:
 			errorHandler(101,command=self.command)
