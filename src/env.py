@@ -9,6 +9,7 @@ jsonFile = "C:/rshell/src/json/env.json"
 def getVars():
 	with open(jsonFile, "r") as jsReader:
 		return json.load(jsReader)
+
 def saveVars(newVars):
 	with open(jsonFile, "w") as jsWriter:
 		json.dump(newVars, jsWriter, indent=4)
@@ -18,7 +19,10 @@ def envExe(com):
 	tmp = Vars[com]
 
 	if tmp[1] == "EXE" or tmp[1] == "PY":
-		subprocess.call(tmp[0])
+		if tmp[0].endswith(".py"):
+			subprocess.call(f"python {tmp[0]}")
+		else:
+			subprocess.call(tmp[0])
 	elif tmp[1] == "DIR":
 		os.chdir(tmp[0])
 
@@ -81,7 +85,6 @@ def makeEnv(tag=None, value=None):
 		
 	Vars[tag] = tmp
 	saveVars(Vars)
-
 
 def envCore(args=None):
 	if args == None:

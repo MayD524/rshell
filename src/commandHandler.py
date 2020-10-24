@@ -22,6 +22,7 @@ commandPair = {
 	11: env.envCore,	    ## make new env var	
 	12: commands.RUN,	    ## run command
 	13: system.getProc      ## get processes
+	14: system.calc         ## run calc
 }
 
 class commandHandler:

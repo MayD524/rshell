@@ -1,5 +1,13 @@
 from prettytable import PrettyTable
+from errorHandler import errorHandler
 import psutil
+import math
+
+def calc(equa=None):
+	if equa != None:
+		print(eval(equa))
+	else:
+		errorHandler(102, "calc")
 
 def getProc():
 	table = PrettyTable()
