@@ -71,7 +71,12 @@ class commandHandler:
 
 			return
 
-
+		if self.command not in self.aliases.keys():
+			try:
+				print(self.cmdArgs[0])
+				commands.RUN(f"{self.command} {self.cmdArgs[0]}")
+			except Exception as e:
+				pass
 
 		if self.command in self.aliases.keys():
 			cmdDetails = self.aliases[self.command]
@@ -81,10 +86,6 @@ class commandHandler:
 
 			elif cmdDetails[0] != 0: ## requires args
 				self.execute(commandID=cmdDetails[1],argState=cmdDetails[0])
-		elif self.command not in self.aliases.keys():
-			try:
-				commands.RUN()
-			except Exception as e:
-				pass
+	
 		else:
 			errorHandler(101,command=self.command)
