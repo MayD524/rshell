@@ -5,7 +5,7 @@ import math
 
 def calc(equa=None):
 	if equa != None:
-		print(eval(equa))
+		print(eval(equa[0]))
 	else:
 		errorHandler(102, "calc")
 

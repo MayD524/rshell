@@ -21,7 +21,7 @@ commandPair = {
 	10: AH.aliases,         ## make new aliase or view
 	11: env.envCore,	    ## make new env var	
 	12: commands.RUN,	    ## run command
-	13: system.getProc      ## get processes
+	13: system.getProc,      ## get processes
 	14: system.calc         ## run calc
 }
 
@@ -58,35 +58,38 @@ class commandHandler:
 			errorHandler(101, command=self.command)
 
 	def preRunner(self):
-		self.command = self.command.lower()
-		if self.command.startswith("$"):
-			tmp = env.getVars()
-			self.command = self.command.replace("$", "")
-			if self.command in tmp.keys():
-				env.envExe(self.command)
-			elif self.command != None:
-				if self.cmdArgs == None:
-					env.makeEnv(tag=self.command)
-				else:
-					env.makeEnv(tag=self.command,value=self.cmdArgs[0])
+		try:
+			self.command = self.command.lower()
+			if self.command.startswith("$"):
+				tmp = env.getVars()
+				self.command = self.command.replace("$", "")
+				if self.command in tmp.keys():
+					env.envExe(self.command)
+				elif self.command != None:
+					if self.cmdArgs == None:
+						env.makeEnv(tag=self.command)
+					else:
+						env.makeEnv(tag=self.command,value=self.cmdArgs[0])
 
-			return
+				return
 
-		if self.command not in self.aliases.keys():
-			try:
-				print(self.cmdArgs[0])
-				commands.RUN(f"{self.command} {self.cmdArgs[0]}")
-			except Exception as e:
-				pass
+			if self.command not in self.aliases.keys():
+				try:
+					print(self.cmdArgs[0])
+					commands.RUN(f"{self.command} {self.cmdArgs[0]}")
+				except Exception as e:
+					pass
 
-		if self.command in self.aliases.keys():
-			cmdDetails = self.aliases[self.command]
+			if self.command in self.aliases.keys():
+				cmdDetails = self.aliases[self.command]
 
-			if cmdDetails[0] == 0 and self.cmdArgs == None: ## takes no args
-				self.execute(commandID=cmdDetails[1])
+				if cmdDetails[0] == 0 and self.cmdArgs == None: ## takes no args
+					self.execute(commandID=cmdDetails[1])
 
-			elif cmdDetails[0] != 0: ## requires args
-				self.execute(commandID=cmdDetails[1],argState=cmdDetails[0])
-	
-		else:
-			errorHandler(101,command=self.command)
+				elif cmdDetails[0] != 0: ## requires args
+					self.execute(commandID=cmdDetails[1],argState=cmdDetails[0])
+		
+			else:
+				errorHandler(101,command=self.command)
+		except Exception as e:
+			print(e)
