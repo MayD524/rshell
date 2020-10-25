@@ -1,4 +1,5 @@
 from errorHandler import errorHandler
+from plugins.winTools import *
 import aliasHandler as AH
 import system
 import commands
@@ -21,8 +22,9 @@ commandPair = {
 	10: AH.aliases,         ## make new aliase or view
 	11: env.envCore,	    ## make new env var	
 	12: commands.RUN,	    ## run command
-	13: system.getProc,      ## get processes
-	14: system.calc         ## run calc
+	13: system.getProc,     ## get processes
+	14: system.calc,        ## run calc
+	15: notification        ## push notification (imported from local winTools)
 }
 
 class commandHandler:
